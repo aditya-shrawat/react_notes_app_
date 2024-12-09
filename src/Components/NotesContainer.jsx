@@ -3,7 +3,7 @@ import Note from './Note'
 
 const NotesContainer = () => {
   return (
-    <div className='grid gap-4 grid-cols-[repeat(auto-fit,minmax(280px,_1fr))] '>
+    <div className='grid gap-4 grid-cols-[repeat(auto-fit,minmax(280px,_1fr))] z-0'>
         <Note />
         <Note />
         <Note />
