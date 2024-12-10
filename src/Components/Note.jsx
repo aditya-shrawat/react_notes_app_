@@ -1,9 +1,12 @@
 import React from 'react'
+import EditButtons from './EditButtons'
 
-const Note = ({title,content,date,bgs}) => {
+const Note = ({id,title,content,date,notes,setNotesData}) => {
   return (
     <div className='bg-red-500 max-w-lg h-64 rounded-xl p-3 overflow-hidden flex flex-col justify-between relative' >
-        {/* <EditButtons /> */}
+        < div className='absolute top-3 right-3'>
+          <EditButtons id={id} notes={notes} setNotesData={setNotesData} />
+        </div>
         <div>
             <h2 className='mb-1 font-semibold text-xl'>{title} </h2>
             <hr className='border-black mb-1'/>
