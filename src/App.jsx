@@ -5,10 +5,8 @@ import Header from './Components/Header'
 
 const App = () => {
   return (
-    <div className=' p-6 relative'>
-      <Header />
+    <div className=' p-4 relative'>
       <NotesContainer />
-      <AddNoteBtn />
     </div>
   )
 }
