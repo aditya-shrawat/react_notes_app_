@@ -11,7 +11,7 @@ const AddNotePopup = ({ isPopUpOn, clickHandler, handleSave }) => {
         const title = e.target.elements.inputTitle ;
         const content = e.target.elements.inputContent ;
         const now = new Date()
-        const date = `${now.getHours()}:${now.getMinutes()}    ${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+        const date = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
 
         if(title.value.trim() || content.value.trim()){
             handleSave(title.value,content.value,date) ;
