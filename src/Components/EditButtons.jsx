@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical,faXmark } from '@fortawesome/free-solid-svg-icons';
 
-const EditButtons = ({id,notes,setNotesData}) => {
+const EditButtons = ({id,notes,setNotesData,pTagRef,noteRef }) => {
     // for edit buttons container
     const [isButtonsOn,setButtonsStatus] = useState(false) ;
 
@@ -14,15 +14,58 @@ const EditButtons = ({id,notes,setNotesData}) => {
     const [displaySaveBtn,setDisplaySaveBtn] = useState(false) ;
     const handleSaveBtnDisplay =()=>{
         setDisplaySaveBtn(!displaySaveBtn) ;
+
+        if (!displaySaveBtn && pTagRef.current) {
+            pTagRef.current.setAttribute('contentEditable', 'true'); // enable editing
+            pTagRef.current.focus(); // focus on the p tag
+        } else if (pTagRef.current) {
+            pTagRef.current.removeAttribute('contentEditable'); // Disable editing
+        }
     }
+
+    // to save the edited content 
+    const handleSaveContent = () => {
+        if (pTagRef.current) {
+          const updatedContent = pTagRef.current.textContent;
+          setNotesData((prevNotes) =>
+            prevNotes.map((note) =>
+              note.id === id ? { ...note, content: updatedContent } : note
+            )
+          );
+          pTagRef.current.removeAttribute('contentEditable'); // disable  editing
+        }
+    }
+
+    // if we click outside the Note after opening the edit buttons 
+    const handleClickOutsideNote = (e)=>{
+        if(noteRef.current && !noteRef.current.contains(e.target)){
+            if(isButtonsOn){ // if edit buttons are on
+                handleEditButtonsDisplay()
+            }
+            if(displaySaveBtn){ // if save button is on
+                handleSaveBtnDisplay()
+            }
+        }
+    }
+    useEffect(()=>{
+        document.addEventListener('mousedown', handleClickOutsideNote);
+
+        // clean up code 
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutsideNote);
+        };
+    },[noteRef,handleEditButtonsDisplay,handleSaveBtnDisplay])
+
 
   return (
     <div className='absoulate top-3 right-3 p-1'>
         <div className='w-6 h-6 flex justify-center items-center rounded-full cursor-pointer hover:bg-red-400 z-0' onClick={handleEditButtonsDisplay}>
             <FontAwesomeIcon icon={faEllipsisVertical} />
         </div>
-        <EditButtonsDiv id={id} notes={notes} setNotesData={setNotesData} isButtonsOn={isButtonsOn} handleEditButtonsDisplay={handleEditButtonsDisplay} handleSaveBtnDisplay={handleSaveBtnDisplay} />
-        <SaveEditedNoteBtn displaySaveBtn={displaySaveBtn} handleSaveBtnDisplay={handleSaveBtnDisplay} handleEditButtonsDisplay={handleEditButtonsDisplay}  />
+        <EditButtonsDiv id={id} notes={notes} setNotesData={setNotesData} isButtonsOn={isButtonsOn} 
+        handleEditButtonsDisplay={handleEditButtonsDisplay} handleSaveBtnDisplay={handleSaveBtnDisplay} />
+        <SaveEditedNoteBtn displaySaveBtn={displaySaveBtn} handleSaveBtnDisplay={handleSaveBtnDisplay} 
+        handleSaveContent={handleSaveContent} />
     </div>
   )
 }
@@ -60,12 +103,13 @@ const EditButtonsDiv = ({id,notes,setNotesData,isButtonsOn,handleEditButtonsDisp
 }
 
 // save button component 
-const SaveEditedNoteBtn = ({displaySaveBtn,handleSaveBtnDisplay,handleEditButtonsDisplay})=>{
+const SaveEditedNoteBtn = ({displaySaveBtn,handleSaveBtnDisplay,handleSaveContent})=>{
     if(!displaySaveBtn){
         return null ;
     }
 
     const saveBtnClickHandler = ()=>{
+        handleSaveContent(); // save content 
         handleSaveBtnDisplay()
     }
 
