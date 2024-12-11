@@ -44,6 +44,7 @@ const EditButtons = ({id,notes,setNotesData,pTagRef,noteRef }) => {
             }
             if(displaySaveBtn){ // if save button is on
                 handleSaveBtnDisplay()
+                handleSaveContent()
             }
         }
     }
