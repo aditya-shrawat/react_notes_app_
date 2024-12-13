@@ -51,10 +51,12 @@ const App = () => {
   },[noteData])
 
   return (
-    <div className=' p-4 max-w-6xl m-auto'>
-      <Header noteData={noteData} searchText={searchText} setSearchText={setSearchText} setSearchedNotes={setSearchedNotes} />
-      <NotesContainer noteData={noteData} setData={setData} searchedNotes={searchedNotes} />
-      <AddNoteBtn handleSave={handleSave} />
+    <div className='min-w-screen min-h-screen bg-[#eff1f3] '>
+      <div className=' p-4 max-w-6xl min-h-screen m-auto '>
+        <Header noteData={noteData} searchText={searchText} setSearchText={setSearchText} setSearchedNotes={setSearchedNotes} />
+        <NotesContainer noteData={noteData} setData={setData} searchedNotes={searchedNotes} />
+        <AddNoteBtn handleSave={handleSave} />
+      </div>
     </div>
   )
 }

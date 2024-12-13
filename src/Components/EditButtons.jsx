@@ -60,7 +60,7 @@ const EditButtons = ({id,notes,setNotesData,pTagRef,noteRef }) => {
 
   return (
     <div className='absoulate top-3 right-3 p-1'>
-        <div className='w-6 h-6 flex justify-center items-center rounded-full cursor-pointer hover:bg-red-400 z-0' onClick={handleEditButtonsDisplay}>
+        <div className='w-6 h-6 flex justify-center items-center rounded-full cursor-pointer hover:bg-[#E9ECEF] ' onClick={handleEditButtonsDisplay}>
             <FontAwesomeIcon icon={faEllipsisVertical} />
         </div>
         <EditButtonsDiv id={id} notes={notes} setNotesData={setNotesData} isButtonsOn={isButtonsOn} 
@@ -91,13 +91,13 @@ const EditButtonsDiv = ({id,notes,setNotesData,isButtonsOn,handleEditButtonsDisp
     }
 
     return (
-        <div className='bg-red-300 w-20 px-1 py-2 rounded-md z-10 absolute top-0 right-0'>
+        <div className='bg-[#e8eaed]  w-20 px-1 py-2 rounded-md z-10 absolute top-0 right-0'>
             <div className='absolute top-1 right-1 w-5 h-5 flex justify-center items-center rounded-full cursor-pointer' onClick={handleEditButtonsDisplay} >
                 <FontAwesomeIcon className='text-sm' icon={faXmark} />
             </div>
             <ul className='list-none mt-4'>
-                <li className='cursor-pointer hover:bg-red-400 w-full px-2 rounded-md mb-1' onClick={handleEditBtn}>Edit</li>
-                <li onClick={handleDeletation} className='cursor-pointer hover:bg-red-400 w-full px-2 rounded-md'>Delete</li>
+                <li className='cursor-pointer hover:bg-[#DEE2E6] w-full px-2 rounded-md mb-1 ' onClick={handleEditBtn}>Edit</li>
+                <li onClick={handleDeletation} className='cursor-pointer hover:bg-[#DEE2E6] w-full px-2 rounded-md '>Delete</li>
             </ul>
         </div>
     )
@@ -115,8 +115,8 @@ const SaveEditedNoteBtn = ({displaySaveBtn,handleSaveBtnDisplay,handleSaveConten
     }
 
     return (
-        <div className='bg-red-300 w-14 px-1 py-1 rounded-md z-10 absolute top-0 right-0'>
-            <div className='cursor-pointer hover:bg-red-400 w-full px-2 rounded-md text-sm' onClick={saveBtnClickHandler}>Save</div>
+        <div className='bg-[#e8eaed] w-14 px-1 py-1 rounded-md z-10 absolute top-0 right-0'>
+            <div className='cursor-pointer w-full px-2 rounded-md font-semibold text-sm' onClick={saveBtnClickHandler}>Save</div>
         </div>
     )
 }

@@ -20,13 +20,13 @@ const Header = ({noteData,searchText,setSearchText,setSearchedNotes}) => {
   return (
      <div className='mb-5'>
         <div className='flex justify-between p-2 mb-1 text-2xl font-semibold'>
-            <h1>Notes</h1>
+            <h1 className='font-serif'>StickyNotes</h1>
             <FontAwesomeIcon icon={faCircleHalfStroke} className='cursor-pointer hover:scale-105 ' />
         </div>
-        <div className='bg-gray-200 w-full px-3 py-2 text-lg flex items-center rounded-xl'>
+        <div className='bg-[#e8eaed] w-full px-3 py-2 text-lg flex items-center border-2 border-[#DEE2E6] rounded-xl'>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             <input type="text" onChange={(e)=>setSearchText(e.target.value)} placeholder='Search' className='bg-transparent w-full px-2 border-none outline-none mx-1' />
-            <button onClick={handleSearch} className='bg-red-300 px-2 rounded-lg font-semibold text-lg '>Search</button>
+            <button onClick={handleSearch} className='bg-[#f9c74f] px-2 rounded-lg font-semibold text-lg text-white '>Search</button>
         </div>
      </div>
   )

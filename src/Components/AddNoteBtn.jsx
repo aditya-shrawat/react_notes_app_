@@ -13,8 +13,8 @@ const AddNoteBtn = ({handleSave}) => {
 
   return (
     <>
-    <div onClick={clickHandler} className='bg-gray-300 h-12 w-12 flex justify-center items-center rounded-full cursor-pointer fixed bottom-10 right-10 z-10'>
-        <FontAwesomeIcon icon={faPlus} className='text-2xl' />
+    <div onClick={clickHandler} className='bg-[#f9c74f] h-12 w-12 text-2xl text-white flex justify-center items-center rounded-full cursor-pointer fixed bottom-10 right-10 z-10'>
+        <FontAwesomeIcon icon={faPlus} />
     </div>
     <AddNotePopup isPopUpOn={isPopUpOn} clickHandler={clickHandler} handleSave={handleSave}  />
     </>
