@@ -29,7 +29,7 @@ const AddNotePopup = ({ isPopUpOn, clickHandler, handleSave }) => {
             <label className='text-lg font-semibold mb-1'>Title</label>
             <input type="text" name="inputTitle" placeholder='Enter Note title' className='px-2 py-1 border-none outline-none rounded-lg text-lg mb-5' />
             <label className='text-lg font-semibold mb-1'>Note Content</label>
-            <textarea type='text' name="inputContent"  placeholder='Enter note content' rows={5} className='max-w-full  px-2 py-1 border-none outline-none rounded-lg text-lg mb-3'></textarea>
+            <textarea type='text' name="inputContent"  placeholder='Enter note content' rows={5} className='max-w-full  px-2 py-1 border-none outline-none resize-none rounded-lg text-lg mb-3'></textarea>
             <div className='w-full h-auto mt-3 flex justify-evenly'>
                 <button type='submit' className='w-24 h-10 text-xl font-semibold rounded-lg cursor-pointer bg-yellow-200'>Save</button>
                 <button type='button' onClick={clickHandler} className='w-24 h-10 text-xl font-semibold rounded-lg cursor-pointer bg-yellow-200'>Cancle</button>
