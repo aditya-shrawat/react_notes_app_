@@ -7,6 +7,8 @@ const App = () => {
 
   const [noteData,setData] = useState([]) ;
   const [Id,setId] = useState(1) ;
+  const [searchText,setSearchText] = useState('') ;
+  const [searchedNotes,setSearchedNotes] = useState([]) ;
 
   // retriving data from local Storage and seting it to noteData
   useEffect(() => {
@@ -50,9 +52,9 @@ const App = () => {
 
   return (
     <div className=' p-4 max-w-6xl m-auto'>
-      <Header />
+      <Header noteData={noteData} searchText={searchText} setSearchText={setSearchText} setSearchedNotes={setSearchedNotes} />
+      <NotesContainer noteData={noteData} setData={setData} searchedNotes={searchedNotes} />
       <AddNoteBtn handleSave={handleSave} />
-      <NotesContainer noteData={noteData} setData={setData} />
     </div>
   )
 }
